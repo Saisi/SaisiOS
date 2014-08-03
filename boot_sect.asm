@@ -6,9 +6,9 @@ call print_string
 jmp $
 
 
-%include 'print2.asm'
+%include 'print.asm'
 
-HELLO_MSG:
+TO_PRINT:
 	db 'jallo',0
 
 times 510-($-$$) db 0

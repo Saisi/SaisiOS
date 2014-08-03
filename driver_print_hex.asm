@@ -1,7 +1,7 @@
 [org 0x7c00]
 
 
-
+mov dx, [TO_PRINT]
 call print_hex
 
 	
