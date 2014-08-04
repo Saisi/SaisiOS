@@ -13,11 +13,12 @@ disk_load:
 
 	jc disk_error
 	pop dx
-	cmp dh, al
+	cmp dh, al ;actual vs expected sectors
 	jne disk_error2
 
 
-
+	mov bx, FINISHED_READ
+	call print_string
 
 	ret
 
@@ -35,3 +36,4 @@ disk_error2:
 
 TO_PRINT db "Disk Read Error",0
 TO_PRINT2 db "Disk Read Error2",0
+FINISHED_READ db "Finished Reading Hard Drive",0

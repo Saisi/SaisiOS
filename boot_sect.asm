@@ -10,10 +10,16 @@ mov bx, 0x9900
 mov es, bx
 mov bx, 0xa000 
 
-mov dh, 2
+mov dh, 2; number of sectors
 mov dl, [BOOT_DRIVE]
 
 call disk_load
+
+
+
+
+
+
 
 jmp $
 
@@ -24,7 +30,6 @@ jmp $
 
 
 BOOT_DRIVE db 0x00
-
 times 510-($-$$) db 0
 dw 0xaa55
 
