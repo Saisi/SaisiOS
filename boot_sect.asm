@@ -6,9 +6,9 @@ mov [BOOT_DRIVE], dl
 mov bp, 0x9800
 mov sp, bp
 
-mov bx, 0x9900
-mov es, bx
-mov bx, 0xa000 
+;mov bx, 0x9000
+; mov es, bx
+mov bx, 0xb000 
 
 mov dh, 2; number of sectors
 mov dl, [BOOT_DRIVE]
@@ -16,8 +16,8 @@ mov dl, [BOOT_DRIVE]
 call disk_load
 
 
-
-
+mov dx, [0xb000]
+call print_hex
 
 
 
@@ -30,6 +30,7 @@ jmp $
 
 
 BOOT_DRIVE db 0x00
+TITLE db "What the fuck man",0
 times 510-($-$$) db 0
 dw 0xaa55
 

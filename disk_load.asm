@@ -3,11 +3,11 @@ disk_load:
 	push dx
 
 	mov ah, 0x02;read sector function
-
 	mov al, 0x02 ;number of sectors
 	mov ch, 0x00 ;cylinder 0
 	mov dh, 0x00 ;track 0
-	mov cl, 0x02 ;sector 2 (base of 2)
+	mov cl, 0x02 ;sector 2 (after boot sector)
+
 
 	int 0x13
 
@@ -17,8 +17,6 @@ disk_load:
 	jne disk_error2
 
 
-	mov bx, FINISHED_READ
-	call print_string
 
 	ret
 
@@ -36,4 +34,4 @@ disk_error2:
 
 TO_PRINT db "Disk Read Error",0
 TO_PRINT2 db "Disk Read Error2",0
-FINISHED_READ db "Finished Reading Hard Drive",0
+FINISHED_READ db "Drive Read Success ",0
